@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import uz.pdp.online.lesson_1_2.Payload.AnswerDto;
 import uz.pdp.online.lesson_1_2.Service.AnswerService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/answer")
 public class AnswerController {
@@ -24,12 +26,12 @@ public class AnswerController {
     }
 
     @PostMapping
-    public ResponseEntity add(@RequestBody AnswerDto answerDto) {
+    public ResponseEntity add(@Valid @RequestBody AnswerDto answerDto) {
         return answerService.addAnswer(answerDto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity edit(@PathVariable Integer id, @RequestBody AnswerDto answerDto) {
+    public ResponseEntity edit(@Valid @RequestBody AnswerDto answerDto,@PathVariable Integer id) {
         return answerService.editAnswer(id, answerDto);
     }
 

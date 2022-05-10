@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.pdp.online.lesson_1_2.Payload.UserDto;
 import uz.pdp.online.lesson_1_2.Service.UserService;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,12 +31,12 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity addUser(@RequestBody UserDto userDto){
+    public ResponseEntity addUser(@Valid @RequestBody UserDto userDto){
         return userService.addUser(userDto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity editUser(@PathVariable Integer id,@RequestBody UserDto userDto){
+    public ResponseEntity editUser(@Valid @PathVariable Integer id, @RequestBody UserDto userDto){
         return userService.editUser(id,userDto);
     }
 

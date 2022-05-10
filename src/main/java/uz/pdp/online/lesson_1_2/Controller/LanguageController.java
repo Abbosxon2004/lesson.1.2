@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.pdp.online.lesson_1_2.Payload.LanguageDto;
 import uz.pdp.online.lesson_1_2.Service.LanguageService;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,12 +30,12 @@ public class LanguageController {
     }
 
     @PostMapping
-    public ResponseEntity addLanguage(@RequestBody LanguageDto languageDto){
+    public ResponseEntity addLanguage(@Valid @RequestBody LanguageDto languageDto){
         return languageService.addLanguge(languageDto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity editLanguage(@PathVariable Integer id,@RequestBody LanguageDto languageDto){
+    public ResponseEntity editLanguage(@Valid @RequestBody LanguageDto languageDto, @PathVariable Integer id){
         return languageService.editLanguge(id,languageDto);
     }
 
