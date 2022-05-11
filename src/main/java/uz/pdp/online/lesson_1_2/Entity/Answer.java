@@ -15,10 +15,10 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
+    @ManyToOne
     private Users user;
 
-    @OneToOne
+    @ManyToOne
     private Task task;
 
     private String text;
